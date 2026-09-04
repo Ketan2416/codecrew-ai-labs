@@ -20,9 +20,27 @@
     }
   });
 
-  /* ── Brief form ──────────────────────────────────────────────────────────
+  /* ── Grid overlay, toggled with G ────────────────────────────────────── */
+
+  var overlay = document.getElementById('gridOverlay');
+
+  for (var i = 0; i < 12; i++) {
+    overlay.appendChild(document.createElement('i'));
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'g' && event.key !== 'G') return;
+    if (event.metaKey || event.ctrlKey || event.altKey) return;
+
+    var tag = document.activeElement && document.activeElement.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+
+    overlay.classList.toggle('on');
+  });
+
+  /* ── Contact form ────────────────────────────────────────────────────────
      No backend yet, so this validates and hands off to the visitor's mail
-     client. Replace the body of the submit handler with a fetch() once an
+     client. Swap the body of the submit handler for a fetch() once an
      endpoint exists (Formspree, Resend, or your own API).
   ─────────────────────────────────────────────────────────────────────────*/
 
@@ -48,11 +66,11 @@
     }
 
     var data = new FormData(form);
-    var subject = 'Brief — ' + data.get('name');
+    var subject = 'Project brief — ' + data.get('name');
     var body = [
       'Name: ' + data.get('name'),
       'Email: ' + data.get('email'),
-      'Ref: ' + (data.get('scope') || 'Unspecified'),
+      'Discipline: ' + (data.get('scope') || 'Unspecified'),
       '',
       data.get('brief')
     ].join('\n');

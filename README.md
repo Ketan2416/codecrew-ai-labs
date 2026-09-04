@@ -3,73 +3,46 @@
 Studio site. Static HTML, CSS and vanilla JS — no build step, no dependencies,
 no webfont requests.
 
-## The idea
+## Design system
 
-The site is laid out as an engineering drawing, because that is what the studio
-sells. The devices are not decoration; each one carries information:
-
-- **Sheet header** — the dark strip at the top, with revision, sheet number and
-  live availability.
-- **Measurement ruler** — pinned to the left edge, ticked every 12px with a
-  heavier mark every 60px.
-- **Reference letters** — the disciplines in the headline are annotated `A` to
-  `D`, and those letters are the row keys in the Capabilities schedule and the
-  options in the brief form. A visitor can point at a letter and ask for a price.
-- **Registration marks** — the corner ticks where each section begins.
-- **General notes** — how-we-work written as the numbered notes block a drawing
-  carries, rather than a four-step process graphic.
-- **Title block** — the footer is the labelled cell grid found in the corner of
-  a real drawing sheet.
-
-## House rules
-
-These exist because breaking them is what makes a site look machine-generated.
-There are none of the following anywhere in `css/styles.css`:
-
-no gradients · no box shadows · no blur · no border radius · no transform on
-hover · no webfonts · no emoji
-
-Hover states change colour only. Type is the system Helvetica stack with a
-system monospace for annotation, so there are zero network requests for fonts.
-
-## Palette
+Swiss / International Typographic Style: a strict 12 column grid, hairline
+rules, one accent colour, and type doing the work instead of effects. There are
+deliberately no gradients, shadows, blurs or rounded corners anywhere in
+`css/styles.css` — adding any of them back will undo the look.
 
 | Token | Value | Use |
 |---|---|---|
-| `--paper` | `#f1efe9` | Warm bone background |
-| `--paper-2` | `#e9e6de` | Row hover |
-| `--ink` | `#16181c` | Text, sheet header, strong rules |
-| `--ink-2` | `#4e525a` | Body copy |
-| `--ink-3` | `#8b8e96` | Annotation |
-| `--line` / `--line-2` | `#cdc9bf` / `#a8a49a` | Construction hairlines |
-| `--pine` | `#124a3c` | The studio colour |
-| `--signal` | `#cf5322` | Live things only: status, focus, errors |
+| `--paper` | `#fbfbf9` | Page background |
+| `--ink` | `#0b0b0b` | Text, strong rules, buttons |
+| `--ink-2` | `#45453f` | Body copy |
+| `--ink-3` | `#8c8c85` | Labels, metadata |
+| `--rule` | `#d7d7d1` | Hairline dividers |
+| `--red` | `#e63312` | The only accent — index numbers, hover, focus |
 
-Deep pine was chosen because effectively no AI-built site uses it — the
-defaults are cyan, blue and violet.
+Typefaces are the system Helvetica stack (`Helvetica Neue`, Helvetica, Arial)
+for everything, with a system monospace stack for labels and index numbers.
+
+Press <kbd>G</kbd> on the page to overlay the grid.
 
 ## Fill these in
 
-Unfinished copy is wrapped in `<span class="ph">` and renders with an orange
-underline, so it is impossible to miss in the browser. Remove the whole
-`<span>`, not just the text.
+Every unfinished piece of copy is wrapped in `<span class="ph">` and renders
+with a red underline so it is impossible to miss in the browser. Remove the
+whole `<span>`, not just the text, as you replace each one.
 
-- [ ] **Selected work** — three entries in `index.html`. Real names, real
-      stacks, and a **number** in every summary. "Handles 400 tickets a week"
-      cannot be invented, and it does more for credibility than the design.
-- [ ] **City, Country** — hero schedule and the title block.
-- [ ] **Studio paragraph** — who you are and why you started this, in your own
-      words.
-- [ ] **Team size, rates, time zone, lead time** — studio schedule.
+- [ ] **Selected Work** — three project rows in `index.html`. Real names, real
+      one-line outcomes with numbers in them, real stacks.
+- [ ] **City, Country** — hero spec list and colophon.
+- [ ] **Studio paragraph** — who you are and why you started this.
+- [ ] **Rates, team size, time zone** — studio spec list.
 - [ ] **Email** — `hello@codecrewailabs.com` appears in `index.html` and as
       `CONTACT_EMAIL` at the top of `js/main.js`.
 
-## Brief form
+## Contact form
 
-Validates client-side, then hands off to the visitor's mail client via
-`mailto:`. To take real submissions, replace the body of the submit handler in
-`js/main.js` with a `fetch()` to an endpoint — Formspree, Resend, or your own
-API.
+Validates client-side and hands off to the visitor's mail client via `mailto:`.
+To take real submissions, replace the body of the submit handler in
+`js/main.js` with a `fetch()` to an endpoint.
 
 ## Run locally
 
@@ -77,14 +50,12 @@ API.
 npx serve .
 ```
 
-Or open `index.html` directly.
-
 ## Structure
 
 ```
 index.html          Single page, sections commented
-css/styles.css      Tokens, layout, components, responsive
-js/main.js          Mobile nav, form handling
+css/styles.css      Design tokens, grid, components, responsive
+js/main.js          Mobile nav, grid overlay, form handling
 assets/logo.svg     Mark
 assets/favicon.svg  Mark, simplified for 32px
 ```
