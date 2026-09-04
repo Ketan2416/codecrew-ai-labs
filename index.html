@@ -514,6 +514,21 @@
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <p class="form-note" id="formNote" role="status"></p>
+
+          <!-- Shown after submit. Because the form hands off to the visitor's
+               email app, this is the safety net for when that does not open. -->
+          <div class="form-fallback" id="formFallback" hidden>
+            <p class="form-fallback-lead">
+              Your email app should have opened with everything filled in — just press
+              send there.
+            </p>
+            <p class="form-fallback-alt">Nothing opened? Copy the details and email them to us:</p>
+            <a class="form-fallback-mail" id="fallbackMail" href="mailto:hello@codecrewailabs.com">hello@codecrewailabs.com</a>
+            <div class="form-fallback-actions">
+              <button type="button" class="btn btn--line btn--sm" data-copy="email">Copy address</button>
+              <button type="button" class="btn btn--line btn--sm" data-copy="message">Copy message</button>
+            </div>
+          </div>
         </form>
 
       </div>

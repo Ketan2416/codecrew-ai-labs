@@ -884,6 +884,43 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
   color: var(--accent);
 }
 
+.form-fallback {
+  margin-top: 16px;
+  padding: 20px;
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  text-align: center;
+}
+
+.form-fallback-lead { font-size: 0.9375rem; font-weight: 600; line-height: 1.5; }
+
+.form-fallback-alt {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.form-fallback-mail {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 1.0625rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  word-break: break-word;
+}
+
+.form-fallback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
 /* ── Footer ──────────────────────────────────────────────────────────── */
 
 .footer {

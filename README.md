@@ -46,12 +46,32 @@ find. Remove the whole `<span>`, not just the text.
 - [ ] **Email** — `hello@codecrewailabs.com` in `index.html` and as
       `CONTACT_EMAIL` at the top of `js/main.js`.
 
-## Brief form
+## Brief form — read this before going live
 
-Validates in the browser, then hands off to the visitor's email client via
-`mailto:`. To receive submissions properly, replace the body of the submit
-handler in `js/main.js` with a `fetch()` to an endpoint — Formspree, Resend, or
-your own API.
+The form **does not send anything to a server.** It validates in the browser,
+then opens the visitor's own email app with a pre-filled message via `mailto:`.
+You only receive the enquiry if the visitor then presses send in their own mail
+client.
+
+That hand-off fails silently on any desktop browser without a default mail app
+configured — which is common for people using webmail. To limit the damage the
+form is never cleared on submit, and a fallback panel appears with the address
+plus **Copy address** and **Copy message** buttons so the visitor can paste the
+details into webmail instead.
+
+It is still a leaky way to collect leads. To collect submissions properly,
+replace the marked block at the end of the submit handler in `js/main.js` with
+a `fetch()` to a form endpoint. Options that need no backend of your own:
+
+| Service | Free tier | Notes |
+|---|---|---|
+| Formspree | 50 / month | Dashboard, spam filtering, host-agnostic |
+| Web3Forms | 250 / month | No account, just an access key |
+| Netlify Forms | 100 / month | Zero config, only if hosted on Netlify |
+| Google Apps Script | Unlimited | Writes each enquiry to a spreadsheet |
+
+`CONTACT_EMAIL` at the top of `js/main.js` drives the mailto address, the
+fallback panel and the copy button. Set it to a mailbox you actually control.
 
 ## Run locally
 

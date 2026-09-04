@@ -93,13 +93,57 @@
   });
 
   /* ── Brief form ──────────────────────────────────────────────────────────
-     No backend yet, so this validates and hands off to the visitor's mail
-     client. Replace the body of the submit handler with a fetch() once an
-     endpoint exists (Formspree, Resend, or your own API).
+     There is no backend, so this validates and then hands the details to the
+     visitor's own email app via a mailto: link. That hand-off can fail
+     silently — a desktop browser with no default mail client simply does
+     nothing — so the form is never cleared and a copy-and-paste fallback is
+     shown instead. Swap the marked block below for a fetch() to a form
+     endpoint (Formspree, Web3Forms, or your own API) to collect submissions
+     properly.
   ─────────────────────────────────────────────────────────────────────────*/
 
   var form = document.getElementById('contactForm');
   var note = document.getElementById('formNote');
+  var fallback = document.getElementById('formFallback');
+  var fallbackMail = document.getElementById('fallbackMail');
+  var lastMessage = '';
+
+  fallbackMail.textContent = CONTACT_EMAIL;
+  fallbackMail.href = 'mailto:' + CONTACT_EMAIL;
+
+  var copyToClipboard = function (text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+
+    var scratch = document.createElement('textarea');
+    scratch.value = text;
+    scratch.setAttribute('readonly', '');
+    scratch.style.position = 'fixed';
+    scratch.style.opacity = '0';
+    document.body.appendChild(scratch);
+    scratch.select();
+    document.execCommand('copy');
+    document.body.removeChild(scratch);
+
+    return Promise.resolve();
+  };
+
+  fallback.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-copy]');
+    if (!button) return;
+
+    var text = button.dataset.copy === 'email' ? CONTACT_EMAIL : lastMessage;
+    var label = button.dataset.label || button.textContent;
+    button.dataset.label = label;
+
+    copyToClipboard(text).then(function () {
+      button.textContent = 'Copied';
+      window.setTimeout(function () {
+        button.textContent = label;
+      }, 1800);
+    });
+  });
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -130,16 +174,19 @@
       data.get('brief')
     ].join('\n');
 
+    lastMessage = subject + '\n\n' + body;
+
+    /* ↓↓↓ Replace from here to the end of the handler with a fetch() when you
+       wire up a real form endpoint. ↓↓↓ */
+
     window.location.href =
       'mailto:' + CONTACT_EMAIL +
       '?subject=' + encodeURIComponent(subject) +
       '&body=' + encodeURIComponent(body);
 
-    note.textContent = 'Opening your email app…';
-    form.reset();
-
-    window.setTimeout(function () {
-      note.textContent = '';
-    }, 6000);
+    /* The form is intentionally NOT reset. If the mail app never opened, the
+       visitor still has everything they typed and can copy it instead. */
+    note.textContent = '';
+    fallback.hidden = false;
   });
 })();
