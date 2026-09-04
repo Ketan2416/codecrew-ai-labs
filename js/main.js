@@ -1,114 +1,145 @@
 (function () {
   'use strict';
 
-  const header = document.getElementById('header');
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  const contactForm = document.getElementById('contactForm');
-  const formNote = document.getElementById('formNote');
+  var CONTACT_EMAIL = 'hello@codecrewailabs.com';
 
-  // Sticky header on scroll
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 20);
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Sticky header shadow ────────────────────────────────────────────── */
+
+  var header = document.getElementById('header');
+
+  var onScroll = function () {
+    header.classList.toggle('is-stuck', window.scrollY > 8);
+  };
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ── Mobile navigation ──────────────────────────────────────────────── */
+
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+
+  burger.addEventListener('click', function () {
+    var open = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', String(open));
   });
 
-  // Mobile nav toggle
-  navToggle.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', isOpen);
+  nav.addEventListener('click', function (event) {
+    if (!event.target.closest('a')) return;
+    nav.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
   });
 
-  // Close mobile nav on link click
-  navLinks.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
+  /* ── Headline word rotator ──────────────────────────────────────────── */
+
+  var rotator = document.getElementById('rotator');
+  var word = rotator && rotator.querySelector('.rotator-word');
+
+  if (word && !reduceMotion) {
+    var words = ['AI agents', 'websites', 'automations', 'platforms'];
+    var index = 0;
+
+    window.setInterval(function () {
+      word.classList.add('is-out');
+
+      window.setTimeout(function () {
+        index = (index + 1) % words.length;
+        word.textContent = words[index];
+        word.classList.remove('is-out');
+      }, 340);
+    }, 2600);
+  }
+
+  /* ── Scroll reveal ──────────────────────────────────────────────────── */
+
+  var targets = document.querySelectorAll(
+    '.section-head, .tile, .work-card, .step, .testimonial-inner, .faq-list, .cta-copy, .form, .hero-panel'
+  );
+
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    Array.prototype.forEach.call(targets, function (el) {
+      el.classList.add('reveal');
+    });
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-in');
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    Array.prototype.forEach.call(targets, function (el) {
+      observer.observe(el);
+    });
+  }
+
+  /* ── FAQ: keep one answer open at a time ────────────────────────────── */
+
+  var faqs = document.querySelectorAll('.faq-item');
+
+  Array.prototype.forEach.call(faqs, function (item) {
+    item.addEventListener('toggle', function () {
+      if (!item.open) return;
+      Array.prototype.forEach.call(faqs, function (other) {
+        if (other !== item) other.open = false;
+      });
     });
   });
 
-  // Scroll reveal
-  const revealElements = document.querySelectorAll(
-    '.service-card, .step, .about-content, .about-visual, .contact-card, .section-header'
-  );
+  /* ── Brief form ──────────────────────────────────────────────────────────
+     No backend yet, so this validates and hands off to the visitor's mail
+     client. Replace the body of the submit handler with a fetch() once an
+     endpoint exists (Formspree, Resend, or your own API).
+  ─────────────────────────────────────────────────────────────────────────*/
 
-  revealElements.forEach((el) => el.classList.add('reveal'));
+  var form = document.getElementById('contactForm');
+  var note = document.getElementById('formNote');
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-  );
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-  revealElements.forEach((el) => observer.observe(el));
+    var required = form.querySelectorAll('[required]');
+    var firstInvalid = null;
 
-  // Contact form (demo — opens mailto)
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+    Array.prototype.forEach.call(required, function (input) {
+      var valid = input.checkValidity();
+      input.closest('.field').classList.toggle('invalid', !valid);
+      if (!valid && !firstInvalid) firstInvalid = input;
+    });
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const service = document.getElementById('service').value;
-    const message = document.getElementById('message').value;
-
-    const subject = encodeURIComponent(`Project Inquiry from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nService: ${service || 'Not specified'}\n\n${message}`
-    );
-
-    window.location.href = `mailto:hello@codecrewailabs.com?subject=${subject}&body=${body}`;
-
-    formNote.hidden = false;
-    contactForm.reset();
-
-    setTimeout(() => {
-      formNote.hidden = true;
-    }, 5000);
-  });
-
-  // Terminal typing effect
-  const terminalLines = [
-    { text: '$ crew deploy --env production', delay: 0 },
-    { text: '→ Building agent workflows...', delay: 800, dim: true },
-    { text: '→ Running integration tests...', delay: 1600, dim: true },
-    { text: '✓ Deployed. All systems operational.', delay: 2400, success: true },
-  ];
-
-  const terminalBody = document.getElementById('terminalBody');
-  if (terminalBody) {
-    let cycle = 0;
-
-    function runTerminalCycle() {
-      terminalBody.innerHTML = '';
-      terminalLines.forEach((line) => {
-        setTimeout(() => {
-          const div = document.createElement('div');
-          div.className = 'line' + (line.dim ? ' dim' : '') + (line.success ? ' success' : '');
-          if (line.text.startsWith('$')) {
-            div.innerHTML = `<span class="prompt">$</span> ${line.text.slice(2)}`;
-          } else {
-            div.textContent = line.text;
-          }
-          terminalBody.appendChild(div);
-        }, line.delay);
-      });
-
-      setTimeout(() => {
-        const cursorLine = document.createElement('div');
-        cursorLine.className = 'line';
-        cursorLine.innerHTML = '<span class="prompt">$</span> <span class="cursor-blink">_</span>';
-        terminalBody.appendChild(cursorLine);
-      }, 3200);
+    if (firstInvalid) {
+      note.textContent = 'Please fill in the highlighted fields.';
+      firstInvalid.focus();
+      return;
     }
 
-    runTerminalCycle();
-    setInterval(() => {
-      cycle++;
-      runTerminalCycle();
+    var data = new FormData(form);
+    var subject = 'New project brief — ' + data.get('name');
+    var body = [
+      'Name: ' + data.get('name'),
+      'Email: ' + data.get('email'),
+      'Service: ' + (data.get('service') || 'Not specified'),
+      'Budget: ' + (data.get('budget') || 'Not specified'),
+      '',
+      data.get('brief')
+    ].join('\n');
+
+    window.location.href =
+      'mailto:' + CONTACT_EMAIL +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+
+    note.textContent = 'Opening your email app…';
+    form.reset();
+
+    window.setTimeout(function () {
+      note.textContent = '';
     }, 6000);
-  }
+  });
 })();
