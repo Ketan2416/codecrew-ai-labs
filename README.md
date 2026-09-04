@@ -1,61 +1,51 @@
 # Code Crew AI Labs
 
-Studio site. Static HTML, CSS and vanilla JS — no build step, no dependencies,
-no webfont requests.
+Company website for **Code Crew AI Labs** — AI agent development, websites, and custom software.
 
-## Design system
+## Brand
 
-Swiss / International Typographic Style: a strict 12 column grid, hairline
-rules, one accent colour, and type doing the work instead of effects. There are
-deliberately no gradients, shadows, blurs or rounded corners anywhere in
-`css/styles.css` — adding any of them back will undo the look.
+| Element | Value |
+|---------|-------|
+| **Name** | Code Crew AI Labs |
+| **Tagline** | Building intelligent agents & digital experiences |
+| **Primary colors** | Cyan `#22d3ee`, Blue `#3b82f6`, Violet `#a78bfa` |
+| **Background** | Deep navy `#0a0e17` |
+| **Fonts** | DM Sans (body), JetBrains Mono (code) |
 
-| Token | Value | Use |
-|---|---|---|
-| `--paper` | `#fbfbf9` | Page background |
-| `--ink` | `#0b0b0b` | Text, strong rules, buttons |
-| `--ink-2` | `#45453f` | Body copy |
-| `--ink-3` | `#8c8c85` | Labels, metadata |
-| `--rule` | `#d7d7d1` | Hairline dividers |
-| `--red` | `#e63312` | The only accent — index numbers, hover, focus |
+## Preview
 
-Typefaces are the system Helvetica stack (`Helvetica Neue`, Helvetica, Arial)
-for everything, with a system monospace stack for labels and index numbers.
-
-Press <kbd>G</kbd> on the page to overlay the grid.
-
-## Fill these in
-
-Every unfinished piece of copy is wrapped in `<span class="ph">` and renders
-with a red underline so it is impossible to miss in the browser. Remove the
-whole `<span>`, not just the text, as you replace each one.
-
-- [ ] **Selected Work** — three project rows in `index.html`. Real names, real
-      one-line outcomes with numbers in them, real stacks.
-- [ ] **City, Country** — hero spec list and colophon.
-- [ ] **Studio paragraph** — who you are and why you started this.
-- [ ] **Rates, team size, time zone** — studio spec list.
-- [ ] **Email** — `hello@codecrewailabs.com` appears in `index.html` and as
-      `CONTACT_EMAIL` at the top of `js/main.js`.
-
-## Contact form
-
-Validates client-side and hands off to the visitor's mail client via `mailto:`.
-To take real submissions, replace the body of the submit handler in
-`js/main.js` with a `fetch()` to an endpoint.
-
-## Run locally
+Open `index.html` in your browser, or run a local server:
 
 ```bash
 npx serve .
 ```
 
+Then visit `http://localhost:3000`
+
 ## Structure
 
 ```
-index.html          Single page, sections commented
-css/styles.css      Design tokens, grid, components, responsive
-js/main.js          Mobile nav, grid overlay, form handling
-assets/logo.svg     Mark
-assets/favicon.svg  Mark, simplified for 32px
+├── index.html          # Landing page
+├── css/styles.css      # Design system & styles
+├── js/main.js          # Interactions & animations
+├── assets/
+│   ├── logo.svg        # Primary logo
+│   └── favicon.svg     # Browser icon
+└── README.md
+```
+
+## Customize
+
+- **Email**: Update `hello@codecrewailabs.com` in `index.html` and `js/main.js`
+- **Colors**: Edit CSS variables in `:root` at the top of `css/styles.css`
+- **Content**: Edit copy directly in `index.html`
+
+## Other saved designs
+
+Two alternative designs are kept in git and can be restored at any time:
+
+```bash
+git checkout design/swiss        # Paper white, 12-column grid, red accent
+git checkout design/technical    # Bone paper, pine green, drawing-sheet layout
+git checkout main                # Back to this design
 ```

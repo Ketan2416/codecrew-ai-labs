@@ -1,6 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <rect width="48" height="48" fill="#0b0b0b"/>
-  <path d="M8 10h8v28H8z" fill="#fbfbf9"/>
-  <path d="M20 10h8v18h-8z" fill="#fbfbf9"/>
-  <path d="M32 10h8v10h-8z" fill="#e63312"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee"/>
+      <stop offset="0.5" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="#111827"/>
+  <rect x="1" y="1" width="46" height="46" rx="11" stroke="url(#g)" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <!-- Bracket + crew symbol -->
+  <path d="M14 16v16M34 16v16" stroke="url(#g)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M20 20h8M20 28h8" stroke="url(#g)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="24" cy="24" r="3" fill="url(#g)"/>
+  <!-- Small nodes (crew members) -->
+  <circle cx="18" cy="14" r="2" fill="#22d3ee" opacity="0.8"/>
+  <circle cx="30" cy="14" r="2" fill="#3b82f6" opacity="0.8"/>
+  <circle cx="24" cy="34" r="2" fill="#a78bfa" opacity="0.8"/>
 </svg>

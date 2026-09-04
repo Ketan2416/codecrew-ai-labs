@@ -1,340 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Code Crew AI Labs — AI agents, web systems, custom software</title>
-<meta name="description" content="Code Crew AI Labs is an independent engineering studio building AI agents, web systems and custom software. From specification to production.">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Code Crew AI Labs — We build intelligent AI agents, modern websites, and custom software solutions for forward-thinking businesses." />
+  <title>Code Crew AI Labs | AI Agents & Web Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
 
-<div class="grid-overlay" id="gridOverlay" aria-hidden="true"></div>
-
-<header class="masthead" id="masthead">
-  <div class="wrap masthead-inner">
-    <a href="#" class="wordmark">
-      <img src="assets/logo.svg" width="26" height="26" alt="">
-      <span class="wordmark-text">Code&nbsp;Crew<em>AI&nbsp;Labs</em></span>
-    </a>
-
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav">
-      <span class="nav-toggle-label">Menu</span>
-      <span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i></span>
-    </button>
-
-    <nav class="nav" id="nav">
-      <a href="#work"><span class="nav-idx">01</span>Work</a>
-      <a href="#capabilities"><span class="nav-idx">02</span>Capabilities</a>
-      <a href="#approach"><span class="nav-idx">03</span>Approach</a>
-      <a href="#studio"><span class="nav-idx">04</span>Studio</a>
-      <a href="#contact" class="nav-cta">Contact</a>
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="logo" aria-label="Code Crew AI Labs home">
+        <img src="assets/logo.svg" alt="" width="36" height="36" />
+        <span class="logo-text">
+          <span class="logo-name">Code Crew</span>
+          <span class="logo-tag">AI Labs</span>
+        </span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="btn btn-sm">Get in Touch</a></li>
+      </ul>
     </nav>
-  </div>
-</header>
+  </header>
 
-<main>
-
-  <!-- ─────────────────────────────  HERO  ───────────────────────────── -->
-  <section class="hero">
-    <div class="wrap grid">
-      <h1 class="hero-title">
-        Code Crew AI&nbsp;Labs builds AI&nbsp;agents, web&nbsp;systems and custom&nbsp;software.
-      </h1>
-
-      <p class="hero-lead">
-        An independent engineering studio. We take work from written specification
-        through to production, and stay on to maintain it.
-      </p>
-
-      <dl class="spec hero-spec">
-        <div class="spec-row">
-          <dt>Studio</dt>
-          <dd>Independent, est.&nbsp;2026</dd>
-        </div>
-        <div class="spec-row">
-          <dt>Based</dt>
-          <dd><span class="ph">City, Country</span></dd>
-        </div>
-        <div class="spec-row">
-          <dt>Disciplines</dt>
-          <dd>AI&nbsp;agents / Web / Software / Infrastructure</dd>
-        </div>
-        <div class="spec-row">
-          <dt>Status</dt>
-          <dd class="in-red">Available for new projects</dd>
-        </div>
-        <div class="spec-row">
-          <dt>Contact</dt>
-          <dd><a href="mailto:hello@codecrewailabs.com">hello@codecrewailabs.com</a></dd>
-        </div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- ─────────────────────────────  WORK  ─────────────────────────────
-       REPLACE THE THREE ROWS BELOW WITH YOUR REAL PROJECTS.
-       Everything wrapped in <span class="ph"> is a placeholder — remove the
-       span (not just the text) once you put real content in.
-  ─────────────────────────────────────────────────────────────────────── -->
-  <section class="section" id="work">
-    <div class="wrap grid">
-      <div class="section-head">
-        <span class="idx">01</span>
-        <h2 class="section-title">Selected<br>Work</h2>
-      </div>
-
-      <div class="section-body">
-        <ol class="work-list">
-
-          <li class="work-item">
-            <span class="work-num">01</span>
-            <div class="work-main">
-              <h3 class="work-title"><span class="ph">Project name</span></h3>
-              <p class="work-summary">
-                <span class="ph">One sentence: what you built, who it was for, and the
-                measurable result — e.g. "Support agent handling 400 tickets a week,
-                cutting first-response time from 6 hours to 4 minutes."</span>
-              </p>
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse"></span>
+            Now accepting new projects
+          </div>
+          <h1 class="hero-title">
+            We build <span class="gradient-text">intelligent agents</span>
+            <br />and <span class="gradient-text-alt">digital experiences</span>
+          </h1>
+          <p class="hero-desc">
+            Code Crew AI Labs is your partner for AI agent development, modern websites,
+            and custom software — engineered by a crew that ships fast and thinks ahead.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Start a Project</a>
+            <a href="#services" class="btn btn-ghost">Explore Services</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-num">AI</span>
+              <span class="stat-label">Agent Experts</span>
             </div>
-            <p class="work-meta"><span class="ph">Stack / discipline</span></p>
-            <span class="work-year"><span class="ph">2026</span></span>
-          </li>
-
-          <li class="work-item">
-            <span class="work-num">02</span>
-            <div class="work-main">
-              <h3 class="work-title"><span class="ph">Project name</span></h3>
-              <p class="work-summary">
-                <span class="ph">One sentence on scope and outcome.</span>
-              </p>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-num">Web</span>
+              <span class="stat-label">Full-Stack Dev</span>
             </div>
-            <p class="work-meta"><span class="ph">Stack / discipline</span></p>
-            <span class="work-year"><span class="ph">2026</span></span>
-          </li>
-
-          <li class="work-item">
-            <span class="work-num">03</span>
-            <div class="work-main">
-              <h3 class="work-title"><span class="ph">Project name</span></h3>
-              <p class="work-summary">
-                <span class="ph">One sentence on scope and outcome.</span>
-              </p>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-num">24/7</span>
+              <span class="stat-label">Automation</span>
             </div>
-            <p class="work-meta"><span class="ph">Stack / discipline</span></p>
-            <span class="work-year"><span class="ph">2026</span></span>
-          </li>
-
-        </ol>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="terminal-title">crew-agent — active</span>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+              <div class="line"><span class="prompt">$</span> crew init --project "your-idea"</div>
+              <div class="line dim">→ Analyzing requirements...</div>
+              <div class="line dim">→ Deploying AI agent pipeline...</div>
+              <div class="line success">✓ Agent online. Ready to ship.</div>
+              <div class="line"><span class="prompt">$</span> <span class="cursor-blink">_</span></div>
+            </div>
+          </div>
+          <div class="orbit orbit-1"></div>
+          <div class="orbit orbit-2"></div>
+          <div class="float-card card-1">
+            <span class="card-icon">🤖</span>
+            <span>Agents</span>
+          </div>
+          <div class="float-card card-2">
+            <span class="card-icon">🌐</span>
+            <span>Websites</span>
+          </div>
+          <div class="float-card card-3">
+            <span class="card-icon">⚡</span>
+            <span>Automation</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ─────────────────────────  CAPABILITIES  ───────────────────────── -->
-  <section class="section" id="capabilities">
-    <div class="wrap grid">
-      <div class="section-head">
-        <span class="idx">02</span>
-        <h2 class="section-title">Capa&shy;bilities</h2>
-      </div>
-
-      <div class="section-body">
-        <table class="cap-table">
-          <thead>
-            <tr>
-              <th scope="col" class="col-num">No.</th>
-              <th scope="col">Discipline</th>
-              <th scope="col">Includes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="col-num">01</td>
-              <th scope="row">AI Agent Engineering</th>
-              <td>LLM orchestration, tool and function calling, MCP servers, retrieval pipelines, evaluation harnesses</td>
-            </tr>
-            <tr>
-              <td class="col-num">02</td>
-              <th scope="row">Web Systems</th>
-              <td>Marketing sites, web applications, design systems, accessibility, performance budgets</td>
-            </tr>
-            <tr>
-              <td class="col-num">03</td>
-              <th scope="row">Custom Software</th>
-              <td>HTTP and event APIs, internal tools, dashboards, third-party integrations, data modelling</td>
-            </tr>
-            <tr>
-              <td class="col-num">04</td>
-              <th scope="row">Infrastructure</th>
-              <td>Deployment pipelines, containerisation, observability, cost and latency tuning</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───────────────────────────  APPROACH  ────────────────────────── -->
-  <section class="section" id="approach">
-    <div class="wrap grid">
-      <div class="section-head">
-        <span class="idx">03</span>
-        <h2 class="section-title">Approach</h2>
-      </div>
-
-      <div class="section-body">
-        <div class="notes">
-          <article class="note">
-            <h3>Specification before code.</h3>
-            <p>
-              Every engagement starts with a written document: what is being built,
-              what it is not, and how we will know it works. If we cannot agree on
-              that document, the project is not ready to start.
-            </p>
+    <!-- Services -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Do</span>
+          <h2>Services built for the AI era</h2>
+          <p>From autonomous agents to pixel-perfect websites — we cover the full stack of modern digital products.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card featured">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/><path d="M9 9h.01M15 9h.01"/></svg>
+            </div>
+            <h3>AI Agent Development</h3>
+            <p>Custom autonomous agents that reason, act, and integrate with your tools — from customer support bots to internal copilots.</p>
+            <ul class="service-tags">
+              <li>LLM Integration</li>
+              <li>MCP & APIs</li>
+              <li>Workflow Automation</li>
+            </ul>
           </article>
-
-          <article class="note">
-            <h3>You talk to the engineer.</h3>
-            <p>
-              No account layer. The people writing the code are the people in
-              your calls and in your channel, for the length of the project.
-            </p>
+          <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            </div>
+            <h3>Website & Web Apps</h3>
+            <p>Fast, responsive, and beautiful websites and web applications that convert visitors into customers.</p>
+            <ul class="service-tags">
+              <li>React / Next.js</li>
+              <li>UI/UX Design</li>
+              <li>SEO Ready</li>
+            </ul>
           </article>
-
-          <article class="note">
-            <h3>Agents need evaluation, not demos.</h3>
-            <p>
-              A model that looks impressive in a screen recording is not a system.
-              We ship agents with test cases, logging and failure handling, so you
-              can see what they do when nobody is watching.
-            </p>
+          <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3>Custom Software</h3>
+            <p>Tailored applications, dashboards, and backends designed around your business logic and scale requirements.</p>
+            <ul class="service-tags">
+              <li>APIs</li>
+              <li>Cloud Native</li>
+              <li>Scalable</li>
+            </ul>
           </article>
-
-          <article class="note">
-            <h3>We maintain what we build.</h3>
-            <p>
-              Handover includes documentation and access, and we stay reachable
-              afterwards. Software that nobody owns stops working.
-            </p>
+          <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3>Integration & Automation</h3>
+            <p>Connect your systems, eliminate manual work, and let intelligent pipelines handle the repetitive tasks.</p>
+            <ul class="service-tags">
+              <li>CI/CD</li>
+              <li>Data Pipelines</li>
+              <li>DevOps</li>
+            </ul>
           </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ────────────────────────────  STUDIO  ─────────────────────────── -->
-  <section class="section" id="studio">
-    <div class="wrap grid">
-      <div class="section-head">
-        <span class="idx">04</span>
-        <h2 class="section-title">Studio</h2>
+    <!-- Process -->
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">How We Work</span>
+          <h2>From idea to launch — the Crew way</h2>
+        </div>
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h3>Discover</h3>
+            <p>We listen to your goals, map requirements, and define what success looks like.</p>
+          </div>
+          <div class="step-line" aria-hidden="true"></div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h3>Design</h3>
+            <p>Wireframes, architecture, and prototypes — aligned before a single line of code.</p>
+          </div>
+          <div class="step-line" aria-hidden="true"></div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h3>Build</h3>
+            <p>Agile sprints with transparent updates. Agents, sites, and systems — shipped iteratively.</p>
+          </div>
+          <div class="step-line" aria-hidden="true"></div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <h3>Launch & Scale</h3>
+            <p>Deploy, monitor, optimize. We stay on as your technical partner as you grow.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="section-body studio-body">
-        <div class="studio-text">
-          <p class="lead">
-            Code Crew AI Labs is a small engineering studio working on AI agents,
-            web systems and custom software.
+    <!-- About -->
+    <section class="section about" id="about">
+      <div class="container about-inner">
+        <div class="about-content">
+          <span class="section-label">About Us</span>
+          <h2>A crew built for the future of work</h2>
+          <p>
+            <strong>Code Crew AI Labs</strong> was founded on a simple belief: the best technology
+            is built by teams who understand both code and context. We're a focused lab of engineers,
+            designers, and AI specialists who partner with startups and enterprises to turn ambitious
+            ideas into production-ready products.
           </p>
           <p>
-            We work in short, defined phases with a fixed scope for each one, so the
-            cost and the deliverable are known before the phase begins. Most
-            engagements start with a paid discovery week that produces the
-            specification, an architecture, and an estimate — after which you are
-            free to build it with us or take the document elsewhere.
+            Whether you need an agent that handles customer inquiries 24/7, a website that stands out
+            in a crowded market, or a full custom platform — we bring the same rigor, speed, and
+            craft to every project.
           </p>
-          <p>
-            <span class="ph">Add a short paragraph here in your own words: who you
-            are, what you did before this, and why you started the studio. Two or
-            three sentences of real detail does more for trust than anything else
-            on this page.</span>
-          </p>
+          <div class="about-values">
+            <div class="value">
+              <strong>Ship Fast</strong>
+              <span>MVPs in weeks, not months</span>
+            </div>
+            <div class="value">
+              <strong>Think Deep</strong>
+              <span>Architecture that scales with you</span>
+            </div>
+            <div class="value">
+              <strong>Stay Human</strong>
+              <span>Clear communication, always</span>
+            </div>
+          </div>
         </div>
+        <div class="about-visual">
+          <div class="crew-grid">
+            <div class="crew-cell accent">C</div>
+            <div class="crew-cell">O</div>
+            <div class="crew-cell">D</div>
+            <div class="crew-cell accent">E</div>
+            <div class="crew-cell">C</div>
+            <div class="crew-cell accent">R</div>
+            <div class="crew-cell">E</div>
+            <div class="crew-cell">W</div>
+            <div class="crew-cell accent">AI</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <dl class="spec studio-spec">
-          <div class="spec-row">
-            <dt>Engagements</dt>
-            <dd>Discovery week / Fixed-scope project / Monthly retainer</dd>
+    <!-- CTA / Contact -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-info">
+            <span class="section-label">Let's Build</span>
+            <h2>Ready to start your next project?</h2>
+            <p>Tell us about your idea. We'll get back within 24 hours with a plan.</p>
+            <div class="contact-details">
+              <a href="mailto:hello@codecrewailabs.com" class="contact-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                hello@codecrewailabs.com
+              </a>
+            </div>
           </div>
-          <div class="spec-row">
-            <dt>Rates</dt>
-            <dd><span class="ph">Set your rates or write "on request"</span></dd>
-          </div>
-          <div class="spec-row">
-            <dt>Team size</dt>
-            <dd><span class="ph">e.g. 2 engineers</span></dd>
-          </div>
-          <div class="spec-row">
-            <dt>Time zone</dt>
-            <dd><span class="ph">e.g. UTC+3, overlap with EU and US-East</span></dd>
-          </div>
-        </dl>
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@company.com" required />
+            </div>
+            <div class="form-row">
+              <label for="service">Service</label>
+              <select id="service" name="service">
+                <option value="">Select a service</option>
+                <option value="agents">AI Agent Development</option>
+                <option value="web">Website / Web App</option>
+                <option value="software">Custom Software</option>
+                <option value="automation">Integration & Automation</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+            <p class="form-note" id="formNote" hidden>Thanks! We'll be in touch soon.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="" width="28" height="28" />
+        <span>Code Crew AI Labs</span>
+      </div>
+      <p class="footer-copy">&copy; 2026 Code Crew AI Labs. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- ───────────────────────────  CONTACT  ─────────────────────────── -->
-  <section class="section section-contact" id="contact">
-    <div class="wrap grid">
-      <div class="section-head">
-        <span class="idx">05</span>
-        <h2 class="section-title">Contact</h2>
-      </div>
-
-      <div class="section-body contact-body">
-        <div class="contact-direct">
-          <p class="contact-label">Write to us directly</p>
-          <a href="mailto:hello@codecrewailabs.com" class="contact-email">hello@codecrewailabs.com</a>
-          <p class="contact-note">
-            Tell us what you are building, the deadline you are working to, and the
-            budget range. We reply to everything within two working days.
-          </p>
-        </div>
-
-        <form class="form" id="contactForm" novalidate>
-          <div class="field">
-            <label for="f-name">Name</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="field">
-            <label for="f-email">Email</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="field">
-            <label for="f-scope">Discipline</label>
-            <select id="f-scope" name="scope">
-              <option value="">Select</option>
-              <option value="AI Agent Engineering">AI Agent Engineering</option>
-              <option value="Web Systems">Web Systems</option>
-              <option value="Custom Software">Custom Software</option>
-              <option value="Infrastructure">Infrastructure</option>
-              <option value="Not sure yet">Not sure yet</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-brief">Brief</label>
-            <textarea id="f-brief" name="brief" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="button">Send brief</button>
-          <p class="form-status" id="formStatus" role="status"></p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="colophon">
-  <div class="wrap colophon-inner">
-    <span>Code Crew AI Labs</span>
-    <span><span class="ph">City, Country</span></span>
-    <span><a href="mailto:hello@codecrewailabs.com">hello@codecrewailabs.com</a></span>
-    <span>&copy; 2026</span>
-    <span class="colophon-note">Set in Helvetica. Press <kbd>G</kbd> for the grid.</span>
-  </div>
-</footer>
-
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

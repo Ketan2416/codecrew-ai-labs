@@ -1,90 +1,114 @@
 (function () {
   'use strict';
 
-  var CONTACT_EMAIL = 'hello@codecrewailabs.com';
+  const header = document.getElementById('header');
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  const contactForm = document.getElementById('contactForm');
+  const formNote = document.getElementById('formNote');
 
-  /* ── Mobile navigation ───────────────────────────────────────────────── */
-
-  var nav = document.getElementById('nav');
-  var navToggle = document.getElementById('navToggle');
-
-  navToggle.addEventListener('click', function () {
-    var open = nav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(open));
+  // Sticky header on scroll
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  nav.addEventListener('click', function (event) {
-    if (event.target.closest('a')) {
-      nav.classList.remove('open');
+  // Mobile nav toggle
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close mobile nav on link click
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
       navToggle.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  /* ── Grid overlay, toggled with G ────────────────────────────────────── */
-
-  var overlay = document.getElementById('gridOverlay');
-
-  for (var i = 0; i < 12; i++) {
-    overlay.appendChild(document.createElement('i'));
-  }
-
-  document.addEventListener('keydown', function (event) {
-    if (event.key !== 'g' && event.key !== 'G') return;
-    if (event.metaKey || event.ctrlKey || event.altKey) return;
-
-    var tag = document.activeElement && document.activeElement.tagName;
-    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
-
-    overlay.classList.toggle('on');
-  });
-
-  /* ── Contact form ────────────────────────────────────────────────────────
-     No backend yet, so this validates and hands off to the visitor's mail
-     client. Swap the body of the submit handler for a fetch() once an
-     endpoint exists (Formspree, Resend, or your own API).
-  ─────────────────────────────────────────────────────────────────────────*/
-
-  var form = document.getElementById('contactForm');
-  var status = document.getElementById('formStatus');
-
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    var required = form.querySelectorAll('[required]');
-    var firstInvalid = null;
-
-    Array.prototype.forEach.call(required, function (input) {
-      var valid = input.checkValidity();
-      input.closest('.field').classList.toggle('invalid', !valid);
-      if (!valid && !firstInvalid) firstInvalid = input;
     });
+  });
 
-    if (firstInvalid) {
-      status.textContent = 'Incomplete — check the marked fields';
-      firstInvalid.focus();
-      return;
+  // Scroll reveal
+  const revealElements = document.querySelectorAll(
+    '.service-card, .step, .about-content, .about-visual, .contact-card, .section-header'
+  );
+
+  revealElements.forEach((el) => el.classList.add('reveal'));
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  revealElements.forEach((el) => observer.observe(el));
+
+  // Contact form (demo — opens mailto)
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value;
+
+    const subject = encodeURIComponent(`Project Inquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nService: ${service || 'Not specified'}\n\n${message}`
+    );
+
+    window.location.href = `mailto:hello@codecrewailabs.com?subject=${subject}&body=${body}`;
+
+    formNote.hidden = false;
+    contactForm.reset();
+
+    setTimeout(() => {
+      formNote.hidden = true;
+    }, 5000);
+  });
+
+  // Terminal typing effect
+  const terminalLines = [
+    { text: '$ crew deploy --env production', delay: 0 },
+    { text: '→ Building agent workflows...', delay: 800, dim: true },
+    { text: '→ Running integration tests...', delay: 1600, dim: true },
+    { text: '✓ Deployed. All systems operational.', delay: 2400, success: true },
+  ];
+
+  const terminalBody = document.getElementById('terminalBody');
+  if (terminalBody) {
+    let cycle = 0;
+
+    function runTerminalCycle() {
+      terminalBody.innerHTML = '';
+      terminalLines.forEach((line) => {
+        setTimeout(() => {
+          const div = document.createElement('div');
+          div.className = 'line' + (line.dim ? ' dim' : '') + (line.success ? ' success' : '');
+          if (line.text.startsWith('$')) {
+            div.innerHTML = `<span class="prompt">$</span> ${line.text.slice(2)}`;
+          } else {
+            div.textContent = line.text;
+          }
+          terminalBody.appendChild(div);
+        }, line.delay);
+      });
+
+      setTimeout(() => {
+        const cursorLine = document.createElement('div');
+        cursorLine.className = 'line';
+        cursorLine.innerHTML = '<span class="prompt">$</span> <span class="cursor-blink">_</span>';
+        terminalBody.appendChild(cursorLine);
+      }, 3200);
     }
 
-    var data = new FormData(form);
-    var subject = 'Project brief — ' + data.get('name');
-    var body = [
-      'Name: ' + data.get('name'),
-      'Email: ' + data.get('email'),
-      'Discipline: ' + (data.get('scope') || 'Unspecified'),
-      '',
-      data.get('brief')
-    ].join('\n');
-
-    window.location.href =
-      'mailto:' + CONTACT_EMAIL +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
-
-    status.textContent = 'Opening your mail client';
-    form.reset();
-
-    window.setTimeout(function () {
-      status.textContent = '';
+    runTerminalCycle();
+    setInterval(() => {
+      cycle++;
+      runTerminalCycle();
     }, 6000);
-  });
+  }
 })();
