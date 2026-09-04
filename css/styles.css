@@ -587,23 +587,42 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 }
 
 .work-card {
+  display: flex;
+  flex-direction: column;
   border-radius: var(--r-lg);
   overflow: hidden;
   background: var(--cream-2);
   border: 1px solid var(--line);
-  transition: border-color 0.25s var(--ease);
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
 }
 
 .work-card:hover { border-color: var(--line-2); }
+
+.work-card--link:hover { border-color: var(--ink); transform: translateY(-3px); }
 
 .cover {
   position: relative;
   aspect-ratio: 4 / 3;
   display: grid;
   place-items: center;
+  overflow: hidden;
 }
 
 .cover img { width: 100%; height: 100%; object-fit: cover; }
+
+.cover-live {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 5px 11px;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-radius: 100px;
+}
 
 .cover-mark {
   font-family: var(--serif);
