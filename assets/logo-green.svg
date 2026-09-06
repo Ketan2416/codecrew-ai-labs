@@ -1,14 +1,17 @@
+<!-- The original green-to-blue brand mark, kept for use anywhere off-site
+     (app icons, social avatars). The site itself uses logo.svg, which is the
+     same glyph recoloured to the cream/vermillion palette. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
   <title>Code Crew AI Labs</title>
   <defs>
-    <linearGradient id="ccl-tile" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="ccl-green" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#05bd53"/>
       <stop offset=".5" stop-color="#10a37c"/>
       <stop offset="1" stop-color="#1a86bd"/>
     </linearGradient>
   </defs>
 
-  <rect width="48" height="48" rx="12" fill="url(#ccl-tile)"/>
+  <rect width="48" height="48" rx="12" fill="url(#ccl-green)"/>
 
   <!-- Angle brackets -->
   <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">

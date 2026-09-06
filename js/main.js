@@ -1,7 +1,11 @@
 (function () {
   'use strict';
 
-  var CONTACT_EMAIL = 'hello@codecrewailabs.com';
+  /* Brief form submissions are handed to WhatsApp. WHATSAPP_NUMBER must be in
+     international format with no plus sign, spaces or dashes — that is what
+     wa.me requires. WHATSAPP_DISPLAY is only ever shown to the visitor. */
+  var WHATSAPP_NUMBER = '919665529494';
+  var WHATSAPP_DISPLAY = '+91 96655 29494';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -93,23 +97,20 @@
   });
 
   /* ── Brief form ──────────────────────────────────────────────────────────
-     There is no backend, so this validates and then hands the details to the
-     visitor's own email app via a mailto: link. That hand-off can fail
-     silently — a desktop browser with no default mail client simply does
-     nothing — so the form is never cleared and a copy-and-paste fallback is
-     shown instead. Swap the marked block below for a fetch() to a form
-     endpoint (Formspree, Web3Forms, or your own API) to collect submissions
-     properly.
+     Validates, then opens WhatsApp with the whole brief pre-typed, so the
+     visitor only has to press send. Nothing is posted to a server, so there is
+     no endpoint to break and no network filter to trip over.
+
+     The catch: delivery depends on the visitor pressing send in WhatsApp. The
+     form is therefore never cleared, and the panel below stays visible with a
+     direct chat link and copy buttons — so a blocked tab cannot lose a brief.
   ─────────────────────────────────────────────────────────────────────────*/
 
   var form = document.getElementById('contactForm');
   var note = document.getElementById('formNote');
   var fallback = document.getElementById('formFallback');
-  var fallbackMail = document.getElementById('fallbackMail');
+  var fallbackChat = document.getElementById('fallbackChat');
   var lastMessage = '';
-
-  fallbackMail.textContent = CONTACT_EMAIL;
-  fallbackMail.href = 'mailto:' + CONTACT_EMAIL;
 
   var copyToClipboard = function (text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -133,7 +134,7 @@
     var button = event.target.closest('[data-copy]');
     if (!button) return;
 
-    var text = button.dataset.copy === 'email' ? CONTACT_EMAIL : lastMessage;
+    var text = button.dataset.copy === 'number' ? WHATSAPP_DISPLAY : lastMessage;
     var label = button.dataset.label || button.textContent;
     button.dataset.label = label;
 
@@ -164,8 +165,10 @@
     }
 
     var data = new FormData(form);
-    var subject = 'New project brief — ' + data.get('name');
-    var body = [
+
+    lastMessage = [
+      'New project brief — ' + data.get('name'),
+      '',
       'Name: ' + data.get('name'),
       'Email: ' + data.get('email'),
       'Service: ' + (data.get('service') || 'Not specified'),
@@ -174,19 +177,18 @@
       data.get('brief')
     ].join('\n');
 
-    lastMessage = subject + '\n\n' + body;
+    var chatUrl =
+      'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lastMessage);
 
-    /* ↓↓↓ Replace from here to the end of the handler with a fetch() when you
-       wire up a real form endpoint. ↓↓↓ */
-
-    window.location.href =
-      'mailto:' + CONTACT_EMAIL +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
-
-    /* The form is intentionally NOT reset. If the mail app never opened, the
-       visitor still has everything they typed and can copy it instead. */
-    note.textContent = '';
+    fallbackChat.href = chatUrl;
     fallback.hidden = false;
+
+    /* Returns null when the browser blocks the tab, which is the one case the
+       visitor needs telling about — otherwise WhatsApp is already open. */
+    var opened = window.open(chatUrl, '_blank', 'noopener');
+
+    note.textContent = opened
+      ? 'Opening WhatsApp with your brief filled in — just press send there.'
+      : 'Your browser blocked the WhatsApp tab. Use the link below to send it.';
   });
 })();

@@ -610,6 +610,9 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 
 .cover img { width: 100%; height: 100%; object-fit: cover; }
 
+/* Patterned covers and the big numeral below are for work cards that have no
+   screenshot yet. All three current cards use real images, so nothing matches
+   these until a fourth project is added. */
 .cover--rx { background: var(--ink); }
 
 .cover-art { width: 100%; height: 100%; }
@@ -836,6 +839,27 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 
 .cta-mail:hover { color: var(--ink); box-shadow: inset 0 -2px 0 var(--ink); }
 
+.cta-chat {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 16px;
+  padding: 10px 16px 10px 13px;
+  border: 1px solid rgba(255, 247, 244, 0.32);
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.cta-chat svg { width: 19px; height: 19px; flex: none; }
+
+.cta-chat:hover {
+  background: rgba(255, 247, 244, 0.12);
+  border-color: rgba(255, 247, 244, 0.6);
+}
+
 .cta-meta {
   margin-top: 22px;
   font-size: 0.875rem;
@@ -926,7 +950,7 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
   color: var(--muted);
 }
 
-.form-fallback-mail {
+.form-fallback-link {
   display: inline-block;
   margin-top: 6px;
   font-size: 1.0625rem;
