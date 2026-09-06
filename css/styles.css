@@ -610,6 +610,10 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 
 .cover img { width: 100%; height: 100%; object-fit: cover; }
 
+.cover--rx { background: var(--ink); }
+
+.cover-art { width: 100%; height: 100%; }
+
 .cover-live {
   position: absolute;
   top: 14px;
