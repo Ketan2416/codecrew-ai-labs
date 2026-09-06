@@ -698,7 +698,59 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 
 /* ── Testimonial ─────────────────────────────────────────────────────── */
 
-.testimonial { padding-top: 0; }
+/* Own band rather than bare page background, so the reviews read as a block
+   and the circuit routing behind them has something to sit on. */
+.testimonial {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.testimonial .shell { position: relative; z-index: 1; }
+
+.circuitry {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  color: var(--ink);
+  opacity: 0.13;
+}
+
+.circuitry svg { display: block; width: 100%; height: 100%; }
+
+.trace {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* A short dash chased by a long gap reads as one signal travelling the run. */
+.trace--flow {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 8 300;
+  animation: trace-flow 7s linear infinite;
+}
+
+@keyframes trace-flow {
+  to { stroke-dashoffset: -308; }
+}
+
+.node { fill: currentColor; }
+
+.node--pulse { animation: node-pulse 3.4s ease-in-out infinite; }
+
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.pads { fill: none; stroke: currentColor; stroke-width: 1.6; }
 
 .testimonial-grid {
   display: grid;
@@ -712,9 +764,12 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
   flex-direction: column;
   margin: 0;
   padding: clamp(24px, 2.6vw, 32px);
-  background: var(--cream-2);
+  /* Lighter than the band it sits on, so the cards lift and the routing
+     behind them stays readable as background. */
+  background: var(--cream);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
 }
 
 .stars {
@@ -1121,7 +1176,8 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .marquee-track, .seal svg { animation: none; }
+  .marquee-track, .seal svg, .trace--flow, .node--pulse { animation: none; }
+  .trace--flow { display: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   * { transition-duration: 0.01ms !important; }
 }
