@@ -680,10 +680,12 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 
 /* ── Work ─────────────────────────────────────────────────────────────── */
 
+/* Equal columns on purpose: the covers are a fixed 4:3, so unequal card widths
+   give unequal cover heights and the row stops aligning. */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
 }
 
 .work-card {
@@ -695,10 +697,6 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
   border: 1px solid var(--line);
   transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
 }
-
-.work-card:nth-child(1) { grid-column: span 7; }
-.work-card:nth-child(2) { grid-column: span 5; }
-.work-card:nth-child(3) { grid-column: 3 / span 8; }
 
 .work-card:hover { border-color: var(--line-2); }
 
@@ -777,11 +775,20 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
   );
 }
 
-.work-body { padding: 22px 24px 26px; }
+.work-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px 24px 26px;
+}
 
-.work-body h3 { font-size: 1.25rem; margin-bottom: 8px; }
+.work-body h3 { font-size: 1.1875rem; margin-bottom: 8px; }
 
 .work-body p { font-size: 0.9375rem; color: var(--muted); line-height: 1.55; }
+
+/* Pushed down so the tag rows line up across cards with different blurb
+   lengths, instead of each one floating under its own paragraph. */
+.work-body .tags { margin-top: auto; padding-top: 18px; }
 
 /* ── Process steps ───────────────────────────────────────────────────── */
 
@@ -1455,9 +1462,6 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
   .header-actions .btn { display: none; }
 
   .work-grid, .testimonial-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .work-card:nth-child(1),
-  .work-card:nth-child(2) { grid-column: auto; }
-  .work-card:nth-child(3) { grid-column: 1 / -1; }
 
   .section-head--row { flex-direction: column; align-items: flex-start; }
 
@@ -1468,7 +1472,6 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 @media (max-width: 620px) {
   .bento, .work-grid, .steps, .testimonial-grid { grid-template-columns: minmax(0, 1fr); }
   .tile--wide { grid-column: span 1; }
-  .work-card:nth-child(3) { grid-column: auto; }
 
   .form .row { grid-template-columns: 1fr; }
   .career-detail-grid { grid-template-columns: minmax(0, 1fr); }
