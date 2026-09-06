@@ -468,6 +468,53 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
   color: var(--cream);
 }
 
+.section--grid { position: relative; overflow: hidden; }
+
+.section--grid .shell { position: relative; z-index: 1; }
+
+.blueprint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  color: var(--ink);
+  opacity: 0.09;
+  background-image:
+    linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+/* Placed with CSS rather than inside one big sliced SVG, so the targets land
+   where they are meant to at every viewport width. */
+.survey {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+}
+
+.survey--a { top: 34px; right: -46px; }
+.survey--b { bottom: 26px; left: -58px; }
+
+.ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-dasharray: 10 8;
+  /* Travelling dashes instead of a rotation, which would need transform-box
+     to spin about the circle's own centre rather than the viewBox centre. */
+  animation: ring-travel 15s linear infinite;
+}
+
+.ring--slow { animation-duration: 24s; animation-direction: reverse; }
+
+/* 216 is a whole number of 18px dash periods, so the loop does not jump. */
+@keyframes ring-travel {
+  to { stroke-dashoffset: -216; }
+}
+
+.tick { fill: none; stroke: currentColor; stroke-width: 1.4; }
+
 .section--dark .section-lede { color: rgba(247, 243, 236, 0.68); }
 
 .section-head { max-width: 46rem; margin-bottom: clamp(36px, 4.5vw, 60px); }
@@ -709,6 +756,14 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 }
 
 .testimonial .shell { position: relative; z-index: 1; }
+
+/* Padded and filled in the band's own colour, so the label masks the circuit
+   trace that runs behind it instead of being struck through by it. */
+.testimonial .kicker {
+  margin-bottom: 24px;
+  padding: 5px 14px 5px 0;
+  background: var(--cream-2);
+}
 
 .circuitry {
   position: absolute;
@@ -1176,7 +1231,7 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .marquee-track, .seal svg, .trace--flow, .node--pulse { animation: none; }
+  .marquee-track, .seal svg, .trace--flow, .node--pulse, .ring { animation: none; }
   .trace--flow { display: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   * { transition-duration: 0.01ms !important; }

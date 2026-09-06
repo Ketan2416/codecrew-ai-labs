@@ -125,7 +125,23 @@
   </section>
 
   <!-- ══════════════════════════════ SERVICES ═════════════════════════════ -->
-  <section class="section" id="services">
+  <section class="section section--grid" id="services">
+
+    <!-- Decorative blueprint layer: graph-paper grid plus two survey targets
+         whose dashed rings travel, so it reads as measured rather than styled. -->
+    <div class="blueprint" aria-hidden="true">
+      <svg class="survey survey--a" viewBox="0 0 160 160" focusable="false">
+        <circle class="ring" cx="80" cy="80" r="62"/>
+        <circle class="ring ring--slow" cx="80" cy="80" r="40"/>
+        <path class="tick" d="M80 8v144M8 80h144"/>
+      </svg>
+      <svg class="survey survey--b" viewBox="0 0 160 160" focusable="false">
+        <circle class="ring" cx="80" cy="80" r="62"/>
+        <circle class="ring ring--slow" cx="80" cy="80" r="40"/>
+        <path class="tick" d="M80 8v144M8 80h144"/>
+      </svg>
+    </div>
+
     <div class="shell">
       <header class="section-head">
         <span class="kicker">What we do</span>
@@ -433,6 +449,8 @@
           <path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9L10 15l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8L10 1.5z" fill="currentColor"/>
         </symbol>
       </svg>
+
+      <span class="kicker">What clients say</span>
 
       <div class="testimonial-grid">
 
