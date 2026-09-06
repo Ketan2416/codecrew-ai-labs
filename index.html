@@ -371,24 +371,64 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════ TESTIMONIAL ════════════════════════════
-       REPLACE with a real quote once you have one. An unattributed quote is
-       worth less than nothing — if you cannot name the person and company,
-       delete this whole section instead.
-  ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════ TESTIMONIALS ═══════════════════════════ -->
   <section class="section testimonial">
     <div class="shell">
-      <figure class="testimonial-inner">
-        <span class="quote-mark" aria-hidden="true">“</span>
-        <blockquote>
-          <span class="ph">A real sentence from a real client about what changed for
-          their business after you shipped.</span>
-        </blockquote>
-        <figcaption>
-          <strong><span class="ph">Client name</span></strong>
-          <span><span class="ph">Role, Company</span></span>
-        </figcaption>
-      </figure>
+
+      <!-- One star shape, reused by every rating below. -->
+      <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+        <symbol id="star" viewBox="0 0 20 20" width="20" height="20">
+          <path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9L10 15l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8L10 1.5z" fill="currentColor"/>
+        </symbol>
+      </svg>
+
+      <div class="testimonial-grid">
+
+        <figure class="review-card">
+          <svg class="stars" viewBox="0 0 104 20" role="img" aria-label="Rated 5 out of 5">
+            <use href="#star"/>
+            <use href="#star" x="21"/>
+            <use href="#star" x="42"/>
+            <use href="#star" x="63"/>
+            <use href="#star" x="84"/>
+          </svg>
+          <blockquote>
+            Excellent design and very easy for customers to order food through WhatsApp.
+          </blockquote>
+          <figcaption>Biryani Junction</figcaption>
+        </figure>
+
+        <figure class="review-card">
+          <svg class="stars" viewBox="0 0 104 20" role="img" aria-label="Rated 5 out of 5">
+            <use href="#star"/>
+            <use href="#star" x="21"/>
+            <use href="#star" x="42"/>
+            <use href="#star" x="63"/>
+            <use href="#star" x="84"/>
+          </svg>
+          <blockquote>
+            Professional pharmacy website with useful features for local customers
+            and tourists.
+          </blockquote>
+          <figcaption>Health Medical Store</figcaption>
+        </figure>
+
+        <figure class="review-card">
+          <svg class="stars" viewBox="0 0 104 20" role="img" aria-label="Rated 5 out of 5">
+            <use href="#star"/>
+            <use href="#star" x="21"/>
+            <use href="#star" x="42"/>
+            <use href="#star" x="63"/>
+            <use href="#star" x="84"/>
+          </svg>
+          <blockquote>
+            Clean, modern and responsive pharmacy storefront design with all
+            essential healthcare features.
+          </blockquote>
+          <figcaption>Megha Pharmacy</figcaption>
+        </figure>
+
+      </div>
     </div>
   </section>
 

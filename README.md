@@ -39,8 +39,9 @@ find. Remove the whole `<span>`, not just the text.
       (`<img src="assets/work-megha-pharmacy.webp" alt="">`) like the other two.
       Where you can, add a result **containing a number** — that single detail
       is worth more than the rest of the page combined.
-- [ ] **Testimonial** — replace with a real, attributed quote. If you cannot name
-      the person and company, delete the section rather than run it anonymous.
+- [x] **Testimonials** — three five-star reviews, one per project. They are
+      attributed to the businesses, not to named people; adding a real name and
+      role to each would make them considerably harder to doubt.
 - [ ] **Pricing** — the first FAQ answer. Real ranges filter out bad enquiries.
 - [x] **City, Country** — now "Rajdhani Satara, Maharashtra, India" in the
       contact block and footer.

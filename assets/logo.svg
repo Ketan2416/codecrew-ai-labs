@@ -1,27 +1,29 @@
+<!-- Same glyph as logo-green.svg, recoloured to the site palette. Vermillion
+     rather than ink so the tile holds its shape on the cream header AND the
+     near-black footer, where an ink tile would disappear. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
   <title>Code Crew AI Labs</title>
   <defs>
     <linearGradient id="ccl-tile" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#05bd53"/>
-      <stop offset=".5" stop-color="#10a37c"/>
-      <stop offset="1" stop-color="#1a86bd"/>
+      <stop offset="0" stop-color="#ff5c33"/>
+      <stop offset="1" stop-color="#e63a12"/>
     </linearGradient>
   </defs>
 
   <rect width="48" height="48" rx="12" fill="url(#ccl-tile)"/>
 
   <!-- Angle brackets -->
-  <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#fff7f4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
     <path d="M18.5 15.5 9 24l9.5 8.5"/>
     <path d="M29.5 15.5 39 24l-9.5 8.5"/>
   </g>
 
   <!-- Centre node chain -->
-  <g stroke="#fff" stroke-width="1.8" stroke-linecap="round">
+  <g stroke="#fff7f4" stroke-width="1.8" stroke-linecap="round">
     <path d="M24 14.6v5.6"/>
     <path d="M24 26.8v6.4"/>
   </g>
-  <g fill="#fff">
+  <g fill="#fff7f4">
     <circle cx="24" cy="11.2" r="2.9"/>
     <rect x="21.4" y="21.2" width="5.2" height="4.4" rx="1.4"/>
     <circle cx="24" cy="36.6" r="2.9"/>

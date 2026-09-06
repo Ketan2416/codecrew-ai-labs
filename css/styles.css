@@ -700,39 +700,45 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 
 .testimonial { padding-top: 0; }
 
-.testimonial-inner {
-  position: relative;
-  margin: 0;
-  padding: clamp(36px, 5vw, 68px);
-  background: var(--cream-2);
-  border: 1px solid var(--line);
-  border-radius: var(--r-xl);
-  text-align: center;
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
 }
 
-.quote-mark {
-  display: block;
-  font-family: var(--serif);
-  font-size: 5rem;
-  line-height: 0.6;
+/* Named apart from the hero's .quote-card, which is a different dark card. */
+.review-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: clamp(24px, 2.6vw, 32px);
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+
+.stars {
+  width: 92px;
+  height: auto;
   color: var(--accent);
-  margin-bottom: 18px;
 }
 
 .testimonial blockquote {
-  max-width: 30em;
-  margin: 0 auto;
-  font-size: clamp(1.375rem, 2.6vw, 2.125rem);
+  margin: 18px 0 0;
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
   font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 1.22;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
 }
 
-.testimonial figcaption { margin-top: 28px; }
-
-.testimonial figcaption strong { display: block; font-size: 1rem; font-weight: 700; }
-
-.testimonial figcaption span { font-size: 0.9375rem; color: var(--muted); }
+/* Pushed to the bottom so attributions line up across cards of unequal text. */
+.testimonial figcaption {
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--muted);
+}
 
 /* ── FAQ ─────────────────────────────────────────────────────────────── */
 
@@ -1084,7 +1090,7 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 
   .header-actions .btn { display: none; }
 
-  .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .work-grid, .testimonial-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .section-head--row { flex-direction: column; align-items: flex-start; }
 
@@ -1092,7 +1098,7 @@ h1 em, h2 em, .cta-title em, .quote-card em, blockquote em {
 }
 
 @media (max-width: 620px) {
-  .bento, .work-grid, .steps { grid-template-columns: minmax(0, 1fr); }
+  .bento, .work-grid, .steps, .testimonial-grid { grid-template-columns: minmax(0, 1fr); }
   .tile--wide { grid-column: span 1; }
 
   .form .row { grid-template-columns: 1fr; }
