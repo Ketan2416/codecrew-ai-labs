@@ -56,10 +56,34 @@
     }, 2600);
   }
 
+  /* ── System map depth ─────────────────────────────────────────────────
+     A small pointer response gives the hero diagram physical depth without
+     moving the headline or affecting scroll. It is skipped for touch and for
+     visitors who request reduced motion.
+  ───────────────────────────────────────────────────────────────────────*/
+
+  var systemMap = document.querySelector('.hero-system');
+
+  if (systemMap && !reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    systemMap.addEventListener('pointermove', function (event) {
+      var box = systemMap.getBoundingClientRect();
+      var x = (event.clientX - box.left) / box.width - 0.5;
+      var y = (event.clientY - box.top) / box.height - 0.5;
+
+      systemMap.style.setProperty('--rx', (-y * 4).toFixed(2) + 'deg');
+      systemMap.style.setProperty('--ry', (x * 5).toFixed(2) + 'deg');
+    });
+
+    systemMap.addEventListener('pointerleave', function () {
+      systemMap.style.setProperty('--rx', '0deg');
+      systemMap.style.setProperty('--ry', '0deg');
+    });
+  }
+
   /* ── Scroll reveal ──────────────────────────────────────────────────── */
 
   var targets = document.querySelectorAll(
-    '.section-head, .tile, .work-card, .step, .testimonial-inner, .faq-list, .cta-copy, .form, .hero-panel'
+    '.section-head, .tile, .work-card, .step, .career-card, .review-card, .faq-list, .cta-copy, .form, .hero-system'
   );
 
   if (!reduceMotion && 'IntersectionObserver' in window) {

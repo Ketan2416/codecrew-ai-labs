@@ -7,9 +7,9 @@ no dependencies.
 ## The look
 
 Warm cream paper, near-black ink, and a single vermillion accent. Big bold
-Manrope headlines with Instrument Serif italics for emphasis, solid colour
-blocks instead of gradients, generous rounded corners, and motion used only
-where it earns attention.
+Manrope headlines with Instrument Serif italics for emphasis, high-contrast
+editorial sections, generous rounded corners, and motion used only where it
+explains or reinforces the product.
 
 | Token | Value | Use |
 |---|---|---|
@@ -24,8 +24,8 @@ Everything is driven by the custom properties in `:root` at the top of
 
 ## Sections
 
-Ticker → hero with rotating headline and spinning seal → bento services grid →
-accent marquee band → work cards → dark process steps → testimonial → FAQ
+Ticker → dark system-map hero → blueprint services grid → accent marquee band →
+editorial work cards → dark process steps → careers → client reviews → FAQ
 accordion → vermillion contact block → dark footer.
 
 ## Fill these in
@@ -34,9 +34,7 @@ Placeholder copy is wrapped in `<span class="ph">` and renders with a dotted
 underline — subtle enough that the page still looks finished, obvious enough to
 find. Remove the whole `<span>`, not just the text.
 
-- [ ] **Work** — all three cards are filled in. Card 3 (Megha Pharmacy) still
-      shows the numbered `.cover` placeholder; swap it for a real screenshot
-      (`<img src="assets/work-megha-pharmacy.webp" alt="">`) like the other two.
+- [x] **Work** — all three cards have project copy, links and screenshots.
       Where you can, add a result **containing a number** — that single detail
       is worth more than the rest of the page combined.
 - [x] **Testimonials** — three five-star reviews, one per project. They are
@@ -46,8 +44,8 @@ find. Remove the whole `<span>`, not just the text.
 - [x] **City, Country** — now "Rajdhani Satara, Maharashtra, India" in the
       contact block and footer.
 - [ ] **Social links** — LinkedIn and GitHub in the footer, or delete them.
-- [ ] **Email** — `hello@codecrewailabs.com` in `index.html` and as
-      `CONTACT_EMAIL` at the top of `js/main.js`.
+- [ ] **Email** — replace `ketan2416@gmail.com` in `index.html` if you create a
+      company-domain mailbox.
 - [ ] **WhatsApp number** — `WHATSAPP_NUMBER` and `WHATSAPP_DISPLAY` in
       `js/main.js`, plus the `wa.me/` links in `index.html`.
 

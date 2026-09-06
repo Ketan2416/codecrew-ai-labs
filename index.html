@@ -37,6 +37,7 @@
       <a href="#services">Services</a>
       <a href="#work">Work</a>
       <a href="#process">Process</a>
+      <a href="#careers">Careers</a>
       <a href="#faq">FAQ</a>
     </nav>
 
@@ -52,12 +53,13 @@
 <main>
 
   <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="shell">
-      <div class="hero-grid">
+      <div class="hero-stage">
 
         <div class="hero-copy">
           <span class="chip"><i class="chip-dot"></i>Taking on new projects</span>
+          <span class="hero-code">AI SYSTEMS / WEB PRODUCTS / AUTOMATION</span>
 
           <h1 class="hero-title">
             We build
@@ -98,26 +100,68 @@
           </dl>
         </div>
 
-        <div class="hero-panel">
-          <figure class="quote-card">
-            <blockquote>
-              We ship in <em>weeks</em>, not quarters — and we stay on after launch.
-            </blockquote>
-            <figcaption>The studio promise</figcaption>
-          </figure>
-
-          <!-- Rotating seal -->
-          <div class="seal" aria-hidden="true">
-            <svg viewBox="0 0 120 120">
-              <defs>
-                <path id="sealPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/>
-              </defs>
-              <text><textPath href="#sealPath">Available for projects • 2026 • Code Crew AI Labs • </textPath></text>
-            </svg>
-            <span class="seal-core">CC</span>
+        <div class="hero-system" aria-hidden="true">
+          <div class="system-head">
+            <span>Live system map</span>
+            <span class="system-status"><i></i>Online</span>
           </div>
 
-          <div class="hero-blob" aria-hidden="true"></div>
+          <svg class="system-map" viewBox="0 0 620 620" focusable="false">
+            <defs>
+              <radialGradient id="nodeGlow">
+                <stop offset="0" stop-color="#ff4b26" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#ff4b26" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="10"/>
+              </filter>
+            </defs>
+
+            <g class="map-grid">
+              <path d="M0 104H620M0 207H620M0 310H620M0 413H620M0 516H620"/>
+              <path d="M104 0V620M207 0V620M310 0V620M413 0V620M516 0V620"/>
+            </g>
+
+            <g class="map-rings">
+              <circle cx="310" cy="310" r="220"/>
+              <circle cx="310" cy="310" r="150"/>
+              <circle cx="310" cy="310" r="82"/>
+            </g>
+
+            <g class="map-links">
+              <path pathLength="1" d="M310 310 175 145 465 166 497 404 310 498 126 397Z"/>
+              <path pathLength="1" d="M175 145 126 397M465 166 310 498"/>
+            </g>
+
+            <g class="map-signals">
+              <path pathLength="1" d="M310 310 175 145 465 166 497 404 310 498 126 397Z"/>
+              <path pathLength="1" d="M175 145 126 397"/>
+            </g>
+
+            <g class="map-nodes">
+              <circle class="node-glow" cx="310" cy="310" r="42"/>
+              <circle class="node-core" cx="310" cy="310" r="15"/>
+              <circle cx="175" cy="145" r="9"/>
+              <circle cx="465" cy="166" r="9"/>
+              <circle cx="497" cy="404" r="9"/>
+              <circle cx="310" cy="498" r="9"/>
+              <circle cx="126" cy="397" r="9"/>
+            </g>
+
+            <g class="map-labels">
+              <text x="190" y="132">REASON</text>
+              <text x="478" y="153">TOOLS</text>
+              <text x="510" y="426">DEPLOY</text>
+              <text x="324" y="520">REPORT</text>
+              <text x="48" y="420">OBSERVE</text>
+            </g>
+          </svg>
+
+          <div class="system-foot">
+            <span><b>01</b> Understand</span>
+            <span><b>02</b> Act</span>
+            <span><b>03</b> Improve</span>
+          </div>
         </div>
 
       </div>
@@ -384,6 +428,132 @@
           </p>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════ CAREERS ═════════════════════════════ -->
+  <section class="section careers" id="careers">
+    <div class="shell">
+      <header class="section-head section-head--row">
+        <div>
+          <span class="kicker">Join the crew</span>
+          <h2 class="section-title">Build useful things.<br><em>Grow with us.</em></h2>
+        </div>
+        <p class="careers-intro">
+          Remote roles across Maharashtra for people who communicate clearly,
+          take ownership and care about helping businesses move forward.
+        </p>
+      </header>
+
+      <div class="career-grid">
+        <article class="career-card career-card--accent">
+          <div class="career-top">
+            <span class="career-count">01 opening</span>
+            <span class="career-location">Remote · Maharashtra</span>
+          </div>
+
+          <h3>Business Development Executive <span>(BDE)</span></h3>
+          <p class="career-summary">
+            Find new clients and grow our website development and AI solutions
+            business through thoughtful outreach and consistent follow-up.
+          </p>
+
+          <details class="career-details">
+            <summary>View role details <span aria-hidden="true">+</span></summary>
+            <div class="career-detail-grid">
+              <div>
+                <h4>Responsibilities</h4>
+                <ul>
+                  <li>Generate leads and identify potential clients.</li>
+                  <li>Reach out through calls, WhatsApp, email and social media.</li>
+                  <li>Understand requirements and schedule discussions.</li>
+                  <li>Present our services and follow prospects through conversion.</li>
+                  <li>Build and maintain strong customer relationships.</li>
+                </ul>
+              </div>
+              <div>
+                <h4>What we look for</h4>
+                <ul>
+                  <li>Good communication and negotiation skills.</li>
+                  <li>Self-motivated and target-driven.</li>
+                  <li>Website or digital-marketing knowledge is a plus.</li>
+                  <li>Freshers and experienced candidates can apply.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <div class="career-bottom">
+            <div class="career-tags">
+              <span>Work from home</span>
+              <span>Flexible hours</span>
+              <span>Fixed + commission</span>
+              <span>Incentives</span>
+            </div>
+            <a class="btn btn--career" href="https://wa.me/919665529494?text=Hi%20CodeCrew%20AI%20Labs%2C%20I%20would%20like%20to%20apply%20for%20the%20Business%20Development%20Executive%20role." target="_blank" rel="noopener noreferrer">
+              Apply on WhatsApp
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="career-card">
+          <div class="career-top">
+            <span class="career-count">02 openings</span>
+            <span class="career-location">Remote</span>
+          </div>
+
+          <h3>Web Developer <span>(2)</span></h3>
+          <p class="career-summary">
+            Build modern, responsive and business-focused websites for local
+            businesses, startups, healthcare, hospitality and e-commerce.
+          </p>
+
+          <details class="career-details">
+            <summary>View role details <span aria-hidden="true">+</span></summary>
+            <div class="career-detail-grid">
+              <div>
+                <h4>Responsibilities</h4>
+                <ul>
+                  <li>Design responsive websites and modern UI/UX interfaces.</li>
+                  <li>Build business sites, landing pages and integrations.</li>
+                  <li>Optimize SEO, performance and cross-browser behavior.</li>
+                  <li>Configure domains, SSL, hosting and analytics.</li>
+                  <li>Maintain and improve existing websites.</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Core toolkit</h4>
+                <ul>
+                  <li>Next.js, React, JavaScript, TypeScript and Tailwind CSS.</li>
+                  <li>HTML5, CSS3, REST APIs, Firebase and Git/GitHub.</li>
+                  <li>Vercel, Google Analytics and Search Console.</li>
+                  <li>WhatsApp, Maps, Namecheap and GoDaddy integrations.</li>
+                  <li>Practical AI-assisted development workflows.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <div class="career-bottom">
+            <div class="career-tags">
+              <span>Next.js</span>
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>Tailwind</span>
+            </div>
+            <a class="btn btn--career" href="https://wa.me/919665529494?text=Hi%20CodeCrew%20AI%20Labs%2C%20I%20would%20like%20to%20apply%20for%20the%20Web%20Developer%20role." target="_blank" rel="noopener noreferrer">
+              Apply on WhatsApp
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <p class="career-note">
+        The BDE role is ideal for students, freelancers, marketers and people
+        with strong local business connections.
+      </p>
     </div>
   </section>
 
@@ -688,6 +858,7 @@
           <a href="#services">Services</a>
           <a href="#work">Work</a>
           <a href="#process">Process</a>
+          <a href="#careers">Careers</a>
           <a href="#faq">FAQ</a>
         </div>
         <div>
