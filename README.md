@@ -24,9 +24,9 @@ Everything is driven by the custom properties in `:root` at the top of
 
 ## Sections
 
-Ticker → dark system-map hero → blueprint services grid → accent marquee band →
-editorial work cards → dark process steps → careers → client reviews → FAQ
-accordion → vermillion contact block → dark footer.
+Ticker → cream hero with studio promise → services → accent marquee →
+work cards → dark process → cream careers → client reviews → FAQ →
+vermillion contact → dark footer.
 
 ## Fill these in
 
@@ -40,7 +40,7 @@ find. Remove the whole `<span>`, not just the text.
 - [x] **Testimonials** — three five-star reviews, one per project. They are
       attributed to the businesses, not to named people; adding a real name and
       role to each would make them considerably harder to doubt.
-- [ ] **Pricing** — the first FAQ answer. Real ranges filter out bad enquiries.
+- [x] **Pricing** — website projects start from ₹2,000+, with a free quote.
 - [x] **City, Country** — now "Rajdhani Satara, Maharashtra, India" in the
       contact block and footer.
 - [ ] **Social links** — LinkedIn and GitHub in the footer, or delete them.
