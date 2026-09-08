@@ -9,16 +9,22 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── Sticky header shadow ────────────────────────────────────────────── */
+  /* ── Sticky header shadow and edge rail progress ─────────────────────── */
 
   var header = document.getElementById('header');
+  var edgeProgress = document.getElementById('edgeProgress');
 
   var onScroll = function () {
     header.classList.toggle('is-stuck', window.scrollY > 8);
+
+    var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    var travelled = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+    edgeProgress.style.height = travelled + '%';
   };
 
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
 
   /* ── Mobile navigation ──────────────────────────────────────────────── */
 
@@ -59,7 +65,9 @@
   /* ── Scroll reveal ──────────────────────────────────────────────────── */
 
   var targets = document.querySelectorAll(
-    '.section-head, .tile, .work-card, .step, .career-card, .review-card, .faq-list, .cta-copy, .form, .hero-panel'
+    '.section-head, .package-intro, .tile, .work-card, .step, .plan-card, ' +
+      '.package-foundation, .comparison-block, .package-detail, .package-close, ' +
+      '.career-card, .faq-list, .cta-copy, .form, .hero-panel'
   );
 
   if (!reduceMotion && 'IntersectionObserver' in window) {
